@@ -17,7 +17,7 @@ var obj = [{
         "isOut": false,
         "isExtra": true,
         "extraInfo": {
-            "runsOffered": 5
+            "runsOffered": 2
         },
         "batsmanName": "Rohit",
         "bowlerName": "Anderson"
@@ -41,7 +41,7 @@ var obj = [{
         "bowlerName": "Anderson"
     },
     {
-        "runScored": 6,
+        "runScored": 2,
         "isOut": true,
         "dismissalType": 'Run Out',
         "batsmanName": "koli",
@@ -130,7 +130,7 @@ var obj = [{
         "isOut": false,
         "isExtra": true,
         "extraInfo": {
-            "runsOffered": 5
+            "runsOffered": 1
         },
         "batsmanName": "Dhoni",
         "bowlerName": "Ali    "
