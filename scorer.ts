@@ -1,6 +1,8 @@
 import { Batsman } from './batsman';
 import { datatype } from './datatype';
 import { Bowler } from './bowler';
+const chalk = require('chalk');
+var tab = require('table-master');
 
 export class Scorer {
  
@@ -55,6 +57,8 @@ export class Scorer {
      bowler = bow.get(ball.bowlerName);
     }
 
+
+
 //batsman calculation
     batsman.addBalls();   
     if(ball.isOut==true)
@@ -71,7 +75,7 @@ export class Scorer {
     }
 
     
-    console.log(batsman.name + "       " + ball.dismissalType + "     " + batsman.numberOfRunsScored + "   (" + batsman.numberOfBallsFaced + ")");
+    console.log((chalk.blue(batsman.name) + "       " + (chalk.red(ball.dismissalType)) + "     " + (chalk.green(batsman.numberOfRunsScored)) + "   (" + (chalk.blue(batsman.numberOfBallsFaced) + ")")));
     bats.delete(ball.batsmanName);   
    }
    else
@@ -96,7 +100,7 @@ export class Scorer {
          
          count=0;
      }
-  //   console.log(bowler);
+
     
 });
 // printing batsman table 
@@ -107,19 +111,20 @@ export class Scorer {
   for(var i=0;i<keys.length;i++)
   {
       batsman = values[i];
-    console.log(batsman.name + "*    Not Out     " + batsman.numberOfRunsScored + "    (" + batsman.numberOfBallsFaced + ")");
+    console.log(chalk.yellow(batsman.name) +chalk.yellow("*") + (chalk.green("    Not Out     ") + (chalk.yellow(batsman.numberOfRunsScored)) + "    (" + (chalk.blue(batsman.numberOfBallsFaced)) + ")"));
   }
   console.log("\n");
-     console.log("Total Score " + totalScore +  "  for " + totalWickets + " in " + overs + "  overs");
+     console.log("Total Score " + chalk.yellow(totalScore) +  "  for " + chalk.red(totalWickets) + " in " + chalk.blue(overs) + "  overs");
   console.log("\n");
 
+  // printing bowler table
 keys = Array.from( bow.keys() );
  values = Array.from( bow.values() );
 console.log("Name          R    W    O    M");
 for(var i=0;i<keys.length;i++)
 {
     bowler = values[i];
-  console.log(bowler.name + "      " +  bowler.getnumber_OfRuns() +  "    " +  bowler.getnumber_OfWickets() + "    " + bowler.getnumber_OfOvers() + "     " + bowler. getnumber_OfMaiden());
+  console.log(chalk.green(bowler.name) + "      " +  chalk.yellow(bowler.getnumber_OfRuns()) +  "    " +  chalk.red(bowler.getnumber_OfWickets()) + "    " + chalk.blue(bowler.getnumber_OfOvers()) + "     " + chalk.green(bowler. getnumber_OfMaiden()));
 }
     }
 }
