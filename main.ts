@@ -17,7 +17,7 @@ let obj: Array<datatype> =  [{
     "bowlerName": "Anderson"
 },
 {
-    "runScored": 0,
+    "runScored": 5,
     "isOut": false,
     "isExtra":true,
     "extraInfo":
@@ -29,28 +29,28 @@ let obj: Array<datatype> =  [{
 }
 ,
 {
-    "runScored": 0,
+    "runScored": 3,
     "isOut": false,
     "batsmanName": "koli",
     "bowlerName": "Anderson"
 }
 ,
 {
-    "runScored": 0,
+    "runScored": 2,
     "isOut": false,
     "batsmanName": "koli",
     "bowlerName": "Anderson"
 }
 ,
 {
-    "runScored": 0,
+    "runScored": 1,
     "isOut": false,
     "batsmanName": "Rohit",
     "bowlerName": "Anderson"
 }
 ,
 {
-    "runScored": 0,
+    "runScored": 6,
     "isOut": true,
     "dismissalType": 'Run Out',
     "batsmanName": "koli",
@@ -58,7 +58,7 @@ let obj: Array<datatype> =  [{
 }
 ,
 {
-    "runScored": 0,
+    "runScored": 3,
     "isOut": true,
     "dismissalType": 'catch',
     "batsmanName": "sehwag",
