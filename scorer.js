@@ -3,7 +3,6 @@ exports.__esModule = true;
 var batsman_1 = require("./batsman");
 var bowler_1 = require("./bowler");
 var chalk = require('chalk');
-var tab = require('table-master');
 var Scorer = /** @class */ (function () {
     function Scorer() {
     }
@@ -54,7 +53,7 @@ var Scorer = /** @class */ (function () {
                     bowler.addWickets();
                     totalWickets++;
                 }
-                console.table((chalk.blue(batsman.name) + "       " + (chalk.red(ball.dismissalType)) + "     " + (chalk.green(batsman.numberOfRunsScored)) + "   (" + (chalk.blue(batsman.numberOfBallsFaced) + ")")));
+                console.log((chalk.blue(batsman.name) + "       " + (chalk.red(ball.dismissalType)) + "     " + (chalk.green(batsman.numberOfRunsScored)) + "   (" + (chalk.blue(batsman.numberOfBallsFaced) + ")")));
                 bats["delete"](ball.batsmanName);
             }
             else {
@@ -81,7 +80,7 @@ var Scorer = /** @class */ (function () {
             console.log(chalk.yellow(batsman.name) + chalk.yellow("*") + (chalk.green("    Not Out     ") + (chalk.yellow(batsman.numberOfRunsScored)) + "    (" + (chalk.blue(batsman.numberOfBallsFaced)) + ")"));
         }
         console.log("\n");
-        console.log("Total Score " + chalk.yellow(totalScore) + "  for " + chalk.red(totalWickets) + " in " + chalk.blue(overs) + "  overs");
+        console.log("Total Score " + chalk.yellow(totalScore) + "  for " + chalk.red(totalWickets) + " in " + chalk.blue(overs) + "  overs" + "   ( RR -  " + chalk.yellow((totalScore / overs).toFixed(2)) + ")");
         console.log("\n");
         // printing bowler table
         keys = Array.from(bow.keys());
