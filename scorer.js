@@ -2,56 +2,14 @@
 exports.__esModule = true;
 var batsman_1 = require("./batsman");
 var bowler_1 = require("./bowler");
+var chalk = require('chalk');
+var tab = require('table-master');
 var Scorer = /** @class */ (function () {
     function Scorer() {
-        this.listOfBatsman = [];
     }
-    // changeStrike() {
-    //     if (playerOnStrike === this.listOfBatsman[0]) {
-    //         playerOnStrike = this.listOfBatsman[1];
-    //     } else {
-    //         playerOnStrike = this.listOfBatsman[0];
-    //     }
-    // }
-    Scorer.prototype.changeStrike = function (currentPlayerOnStrike) {
-        var newPlayerOnStrike;
-        if (currentPlayerOnStrike === this.listOfBatsman[0]) {
-            newPlayerOnStrike = this.listOfBatsman[1];
-        }
-        else {
-            newPlayerOnStrike = this.listOfBatsman[0];
-        }
-        return newPlayerOnStrike;
-    };
     Scorer.prototype.calculateScore = function (obj) {
         var bats = new Map();
         var bow = new Map();
-        // Computation Logic
-        // 1. Check if the run scored is odd or even.
-        // 2. If odd, update score of player on strike and change strike
-        // 3. If even, update score of player on strike.
-        // 4. Increment total score by the run scored.
-        // 5. If number of balls bowled is a mutiple of six, change strike.
-        /* let playerOnStrike = this.listOfBatsman[0];
-         arr.forEach((runScored, ballNumber) => {
-             if (runScored % 2 === 1) {
-                 if (playerOnStrike) {
-                     playerOnStrike.addRuns(runScored);
-                     // Change strike
-                     playerOnStrike = this.changeStrike(playerOnStrike);
-                 }
-             } else {
-                 if (playerOnStrike) {
-                     playerOnStrike.addRuns(runScored);
-                 }
-             }
-             this.totalScore += runScored;
-             if ((ballNumber + 1) % 6 === 0) {
-                 if (playerOnStrike) {
-                     playerOnStrike = this.changeStrike(playerOnStrike);
-                 }
-             }
-         })*/
         var totalScore = 0;
         var batsman;
         var bowler;
@@ -96,7 +54,7 @@ var Scorer = /** @class */ (function () {
                     bowler.addWickets();
                     totalWickets++;
                 }
-                console.log(batsman.name + "       " + ball.dismissalType + "     " + batsman.numberOfRunsScored + "   (" + batsman.numberOfBallsFaced + ")");
+                console.table((chalk.blue(batsman.name) + "       " + (chalk.red(ball.dismissalType)) + "     " + (chalk.green(batsman.numberOfRunsScored)) + "   (" + (chalk.blue(batsman.numberOfBallsFaced) + ")")));
                 bats["delete"](ball.batsmanName);
             }
             else {
@@ -114,24 +72,24 @@ var Scorer = /** @class */ (function () {
                 }
                 count = 0;
             }
-            //   console.log(bowler);
         });
         // printing batsman table 
         var keys = Array.from(bats.keys());
         var values = Array.from(bats.values());
         for (var i = 0; i < keys.length; i++) {
             batsman = values[i];
-            console.log(batsman.name + "*    Not Out     " + batsman.numberOfRunsScored + "    (" + batsman.numberOfBallsFaced + ")");
+            console.log(chalk.yellow(batsman.name) + chalk.yellow("*") + (chalk.green("    Not Out     ") + (chalk.yellow(batsman.numberOfRunsScored)) + "    (" + (chalk.blue(batsman.numberOfBallsFaced)) + ")"));
         }
         console.log("\n");
-        console.log("Total Score " + totalScore + "  for " + totalWickets + " in " + overs + "  overs");
+        console.log("Total Score " + chalk.yellow(totalScore) + "  for " + chalk.red(totalWickets) + " in " + chalk.blue(overs) + "  overs");
         console.log("\n");
+        // printing bowler table
         keys = Array.from(bow.keys());
         values = Array.from(bow.values());
         console.log("Name          R    W    O    M");
         for (var i = 0; i < keys.length; i++) {
             bowler = values[i];
-            console.log(bowler.name + "      " + bowler.getnumber_OfRuns() + "    " + bowler.getnumber_OfWickets() + "    " + bowler.getnumber_OfOvers() + "     " + bowler.getnumber_OfMaiden());
+            console.log(chalk.green(bowler.name) + "      " + chalk.yellow(bowler.getnumber_OfRuns()) + "    " + chalk.red(bowler.getnumber_OfWickets()) + "    " + chalk.blue(bowler.getnumber_OfOvers()) + "     " + chalk.green(bowler.getnumber_OfMaiden()));
         }
     };
     return Scorer;
