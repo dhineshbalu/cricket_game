@@ -2,7 +2,7 @@ import { Batsman } from './batsman';
 import { datatype } from './datatype';
 import { Bowler } from './bowler';
 const chalk = require('chalk');
-var tab = require('table-master');
+
 
 export class Scorer {
  
@@ -114,7 +114,7 @@ export class Scorer {
     console.log(chalk.yellow(batsman.name) +chalk.yellow("*") + (chalk.green("    Not Out     ") + (chalk.yellow(batsman.numberOfRunsScored)) + "    (" + (chalk.blue(batsman.numberOfBallsFaced)) + ")"));
   }
   console.log("\n");
-     console.log("Total Score " + chalk.yellow(totalScore) +  "  for " + chalk.red(totalWickets) + " in " + chalk.blue(overs) + "  overs");
+     console.log("Total Score " + chalk.yellow(totalScore) +  "  for " + chalk.red(totalWickets) + " in " + chalk.blue(overs) + "  overs" + "   ( RR -  " + chalk.yellow((totalScore/overs).toFixed(2)) + ")");
   console.log("\n");
 
   // printing bowler table
